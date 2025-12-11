@@ -47,6 +47,7 @@ export function OperateOnStock(operation, identifier) {
             foundID.currentPrice *= 1.05
             stockMarket.stocks.forEach((stock) => {
                 if (stock.category === foundID.category) {
+                    stock.previousPrices.push(stock.currentPrice)
                     stock.currentPrice *= 1.01
                 } 
                 })
@@ -60,6 +61,7 @@ export function OperateOnStock(operation, identifier) {
             foundName.currentPrice *= 1.05
             stockMarket.stocks.forEach((stock) => {
                 if (stock.category === foundName.category) {
+                    stock.previousPrices.push(stock.currentPrice)
                     stock.currentPrice *= 1.01
                 }   
                 })
@@ -75,7 +77,9 @@ export function OperateOnStock(operation, identifier) {
             foundIDSell.currentPrice *= 0.95
             stockMarket.stocks.forEach((stock) => {
                 if (stock.category === foundIDSell.category) {
+                    stock.previousPrices.push(stock.currentPrice)
                     stock.currentPrice *= 0.99 
+                    
                 }     
                 })
             return
@@ -87,6 +91,7 @@ export function OperateOnStock(operation, identifier) {
             foundNameSell.currentPrice *= 0.95
             stockMarket.stocks.forEach((stock) => {
                 if (stock.category === foundNameSell.category) {
+                    stock.previousPrices.push(stock.currentPrice)
                     stock.currentPrice *= 0.99 
                 }    
                 })
