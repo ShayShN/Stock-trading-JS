@@ -45,7 +45,12 @@ export function OperateOnStock(operation, identifier) {
             foundID.previousPrices.push(foundID.currentPrice)
             foundID.availableStocks += askAmountID
             foundID.currentPrice *= 1.05
-            stockMarket.stocks.forEach((stock) => stock.currentPrice *= 1.01)
+            stockMarket.stocks.forEach((stock) => {
+                stock.category === foundID.category
+                stock.currentPrice *= 1.01
+                    
+                })
+            }
             return
         }
         if (foundName) {
@@ -53,9 +58,13 @@ export function OperateOnStock(operation, identifier) {
             foundName.previousPrices.push(foundName.currentPrice)
             foundName.availableStocks += askAmountName
             foundName.currentPrice *= 1.05
-            stockMarket.stocks.forEach((stock) => stock.currentPrice *= 1.01)
+            stockMarket.stocks.forEach((stock) => {
+                stock.category === foundName.category
+                stock.currentPrice *= 1.01
+                    
+                })
             return
-        }
+        
         }
     else if (operation === 'sell') {
         const foundIDSell = stockMarket.stocks.find((stock) => stock.id === identifier)
@@ -65,7 +74,10 @@ export function OperateOnStock(operation, identifier) {
             foundIDSell.previousPrices.push(foundIDSell.currentPrice)
             foundIDSell.availableStocks -= askAmountID
             foundIDSell.currentPrice *= 0.95
-            stockMarket.stocks.forEach((stock) => stock.currentPrice *= 0.99)
+            stockMarket.stocks.forEach((stock) => {
+                stock.category === foundIDSell.category
+                stock.currentPrice *= 0.99     
+                })
             return
         }
         if (foundNameSell) {
@@ -73,7 +85,10 @@ export function OperateOnStock(operation, identifier) {
             foundNameSell.previousPrices.push(foundNameSell.currentPrice)
             foundNameSell.availableStocks -= askAmountName
             foundNameSell.currentPrice *= 0.95
-            stockMarket.stocks.forEach((stock) => stock.currentPrice *= 0.99)
+            stockMarket.stocks.forEach((stock) => {
+                stock.category === foundNameSell.category
+                stock.currentPrice *= 0.99     
+                })
             return 
     }
     else {
