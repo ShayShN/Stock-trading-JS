@@ -46,9 +46,9 @@ export function OperateOnStock(operation, identifier) {
             foundID.availableStocks += askAmountID
             foundID.currentPrice *= 1.05
             stockMarket.stocks.forEach((stock) => {
-                stock.category === foundID.category
-                stock.currentPrice *= 1.01
-                    
+                if (stock.category === foundID.category) {
+                    stock.currentPrice *= 1.01
+                } 
                 })
             }
             return
@@ -59,12 +59,11 @@ export function OperateOnStock(operation, identifier) {
             foundName.availableStocks += askAmountName
             foundName.currentPrice *= 1.05
             stockMarket.stocks.forEach((stock) => {
-                stock.category === foundName.category
-                stock.currentPrice *= 1.01
-                    
+                if (stock.category === foundName.category) {
+                    stock.currentPrice *= 1.01
+                }   
                 })
             return
-        
         }
     else if (operation === 'sell') {
         const foundIDSell = stockMarket.stocks.find((stock) => stock.id === identifier)
@@ -75,8 +74,9 @@ export function OperateOnStock(operation, identifier) {
             foundIDSell.availableStocks -= askAmountID
             foundIDSell.currentPrice *= 0.95
             stockMarket.stocks.forEach((stock) => {
-                stock.category === foundIDSell.category
-                stock.currentPrice *= 0.99     
+                if (stock.category === foundIDSell.category) {
+                    stock.currentPrice *= 0.99 
+                }     
                 })
             return
         }
@@ -86,15 +86,15 @@ export function OperateOnStock(operation, identifier) {
             foundNameSell.availableStocks -= askAmountName
             foundNameSell.currentPrice *= 0.95
             stockMarket.stocks.forEach((stock) => {
-                stock.category === foundNameSell.category
-                stock.currentPrice *= 0.99     
+                if (stock.category === foundNameSell.category) {
+                    stock.currentPrice *= 0.99 
+                }    
                 })
             return 
     }
     else {
         console.log("invalid!!!")
         return    
-    }
-            
+    }       
 }       
 }
